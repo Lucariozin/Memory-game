@@ -9,13 +9,17 @@ import { PlayersContainer } from '../components/PlayersContainer';
 import { useMemoryGame } from '../hooks/useMemoryGame';
 
 export default function Play() {
-  const { roundSetup, highestScorePlayer, restartGame, newGame } = useMemoryGame();
+  const { roundSetup, highestScorePlayer, playersWhoTied, restartGame, newGame } = useMemoryGame();
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
     if (highestScorePlayer) setModalIsOpen(true);
-  }, [highestScorePlayer]);
+
+    if (!highestScorePlayer && playersWhoTied.length > 0) {
+      setModalIsOpen(true);
+    } 
+  }, [highestScorePlayer, playersWhoTied]);
 
   return (
     <Flex
@@ -28,6 +32,7 @@ export default function Play() {
         isOpen={modalIsOpen}
         onClose={() => setModalIsOpen(false)}
         highestScorePlayer={highestScorePlayer}
+        playersWhoTied={playersWhoTied}
         restartGame={restartGame}
         newGame={newGame}
       />
@@ -37,7 +42,8 @@ export default function Play() {
       <MemoryContainer />
 
       <Flex
-        w="900px"
+        maxW="900px"
+        w="100%"
         mx="auto"
       >
         <PlayersContainer players={roundSetup.players} />

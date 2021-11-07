@@ -38,6 +38,7 @@ export function MemoryGameProvider({ children }: MemoryGameProviderProps) {
   const currentPlayerRef = useRef(currentPlayer);
 
   const [highestScorePlayer, setHighestScorePlayer] = useState<Player>();
+  const [playersWhoTied, setPlayersWhoTied] = useState<Player[]>([]);
 
   const [roundSetup, setRoundSetup] = useState<RoundSetup>({
     theme: 'Numbers',
@@ -60,9 +61,9 @@ export function MemoryGameProvider({ children }: MemoryGameProviderProps) {
     hideCardsCB(cards, activeCards, setMoves, setCards)
   }, [cards]);
   
-  const restartGame = useCallback(() => restartGameCB(setRoundSetup, setCards, setHighestScorePlayer), []);
+  const restartGame = useCallback(() => restartGameCB(setRoundSetup, setCards, setHighestScorePlayer, setPlayersWhoTied), []);
   
-  const newGame = useCallback(() => newGameCB(setRoundSetup, setHighestScorePlayer), []);
+  const newGame = useCallback(() => newGameCB(setRoundSetup, setHighestScorePlayer, setPlayersWhoTied), []);
 
   const createPlayers = useCallback((numberOfPlayers: number) => {
     createPlayersCB(numberOfPlayers, setRoundSetup);
@@ -96,10 +97,14 @@ export function MemoryGameProvider({ children }: MemoryGameProviderProps) {
   
   useEffect(() => {
     if (gameIsOver) {
-      const highestScorePlayer = getHighestScorePlayer() as Player;
+      const highestScorePlayer = getHighestScorePlayer() as Player[];
 
-      if (highestScorePlayer) {
-        setHighestScorePlayer(highestScorePlayer);
+      if (highestScorePlayer.length === 1) {
+        setHighestScorePlayer(highestScorePlayer[0]);
+      }
+
+      if (highestScorePlayer.length > 1) {
+        setPlayersWhoTied(highestScorePlayer);
       }
     }
   }, [gameIsOver, getHighestScorePlayer]);
@@ -178,7 +183,8 @@ export function MemoryGameProvider({ children }: MemoryGameProviderProps) {
       shuffleCards,
       restartGame,
       highestScorePlayer,
-      newGame
+      newGame,
+      playersWhoTied
     }}>
       {children}
     </MemoryGameContext.Provider>

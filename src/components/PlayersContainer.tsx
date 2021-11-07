@@ -1,4 +1,4 @@
-import { HStack } from '@chakra-ui/react';
+import { SimpleGrid, Flex } from '@chakra-ui/react';
 import { PlayerCard } from './PlayerCard';
 
 type Player = {
@@ -13,22 +13,25 @@ interface PlayersContainerProps {
 
 export function PlayersContainer({ players }: PlayersContainerProps) {
   return (
-    <HStack
+    <SimpleGrid
+      gridTemplateColumns={["1fr 1fr", "1fr 1fr", "1fr 1fr 1fr 1fr"]}
       w="100%"
-      spacing="6"
+      paddingX="2"
+      spacing={["2", "4", "6"]}
       marginBottom="30px"
-      justify="center"
     >
 
       {players.map((player) => (
-        <PlayerCard
-          key={player.playerName}
-          name={player.playerName}
-          score={player.score}
-          isActive={player.isCurrent}
-        />
+        <Flex w="100%" justify="center">
+          <PlayerCard
+            key={player.playerName}
+            name={player.playerName}
+            score={player.score}
+            isActive={player.isCurrent}
+          />
+        </Flex>
       ))}
 
-    </HStack>
+    </SimpleGrid>
   );
 }

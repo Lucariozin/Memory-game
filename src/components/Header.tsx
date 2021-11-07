@@ -12,12 +12,14 @@ export function Header() {
       w="100%"
       h="80px"
       bg="gray.50"
+      paddingX="2"
     >
       <Flex
         w="900px"
         mx="auto"
         align="center"
         justify="space-between"
+        flexDirection={["column", "row"]}
       >
         <Heading
           as="h1"
@@ -46,22 +48,7 @@ export function Header() {
           </Button>
           
           <NewGameButton />
-          {/* <Button
-            borderRadius="100"
-            bg="gray.200"
-            color="red.600"
-            fontWeight="700"
-            transition=".3s ease-in-out"
 
-            _hover={{
-              bg: 'red.600',
-              color: 'white',
-            }}
-
-            onClick={handleNewGame}
-          >
-            New Game
-          </Button> */}
         </HStack>
       </Flex>
     </Flex>

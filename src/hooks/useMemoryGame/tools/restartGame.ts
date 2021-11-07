@@ -9,9 +9,10 @@ type RestartGameCB = (
   setRoundSetup: Dispatch<SetStateAction<RoundSetup>>,
   setCards: Dispatch<SetStateAction<Cards>>,
   setHighestScorePlayer: Dispatch<SetStateAction<Player | undefined>>,
+  setPlayersWhoTied: Dispatch<SetStateAction<Player[]>>,
 ) => void;
 
-export const restartGameCB: RestartGameCB = (setRoundSetup, setCards, setHighestScorePlayer) => {
+export const restartGameCB: RestartGameCB = (setRoundSetup, setCards, setHighestScorePlayer, setPlayersWhoTied) => {
   setRoundSetup((state) => {
     const newPlayers = state.players.map((player) => {
       if (player.id === 1) {
@@ -35,6 +36,7 @@ export const restartGameCB: RestartGameCB = (setRoundSetup, setCards, setHighest
     };
   });
 
+  setPlayersWhoTied([]);
   setHighestScorePlayer(undefined);
 
   hideAllCardsCB(setCards);

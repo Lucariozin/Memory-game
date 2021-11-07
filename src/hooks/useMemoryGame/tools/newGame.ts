@@ -4,9 +4,10 @@ import { Player, RoundSetup } from "../../../types/MemoryGameTypes";
 type NewGameCB = (
   setRoundSetup: Dispatch<SetStateAction<RoundSetup>>,
   setHighestScorePlayer: Dispatch<SetStateAction<Player | undefined>>,
+  setPlayersWhoTied: Dispatch<SetStateAction<Player[]>>,
 ) => void;
 
-export const newGameCB: NewGameCB = (setRoundSetup, setHighestScorePlayer) => {
+export const newGameCB: NewGameCB = (setRoundSetup, setHighestScorePlayer, setPlayersWhoTied) => {
   setRoundSetup((state) => {
     const newPlayers = state.players.map((player) => {
       if (player.id === 1) {
@@ -30,5 +31,6 @@ export const newGameCB: NewGameCB = (setRoundSetup, setHighestScorePlayer) => {
     };
   });
 
+  setPlayersWhoTied([]);
   setHighestScorePlayer(undefined);
 };

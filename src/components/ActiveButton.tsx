@@ -14,7 +14,7 @@ export function ActiveButton({ children, isActive, onClick = () => {} }: ActiveB
         bg="pink.500"
         color="white"
         borderRadius="100"
-        fontSize="20"
+        fontSize={["16", "20"]}
         fontWeight="700"
         w="100%"
 
@@ -29,7 +29,7 @@ export function ActiveButton({ children, isActive, onClick = () => {} }: ActiveB
         bg="gray.300"
         color="white"
         borderRadius="100"
-        fontSize="20"
+        fontSize={["16", "20"]}
         transition=".2s ease-in-out"
         fontWeight="700"
         w="100%"

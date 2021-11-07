@@ -16,7 +16,7 @@ export function Label({ children, text }: ChooseOneProps) {
 
       <HStack
         w="100%"
-        spacing="25px"
+        spacing={["3", "6"]}
       >
         {children}
       </HStack>

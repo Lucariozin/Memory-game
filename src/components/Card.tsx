@@ -8,14 +8,12 @@ interface CardProps {
 };
 
 export function Card({ status = 'hidden', icon, onClick = () => {} }: CardProps) {
-  // const [newState, setNewState] = useState(state);
-
   const color = status === 'hidden' ? "red.700" : status === 'highlighted' ? "pink.500" : "gray.300";
 
   return (
     <Flex
-      w="70px"
-      h="70px"
+      w={["55px", "65px", "70px"]}
+      h={["55px", "65px", "70px"]}
       borderRadius="50%"
       bg={color}
       align="center"
@@ -25,7 +23,7 @@ export function Card({ status = 'hidden', icon, onClick = () => {} }: CardProps)
     >
       {icon && status !== 'hidden' ? typeof icon === 'number' ? (
         <Box
-          fontSize={"40px"}
+          fontSize={["30", "40px"]}
           fontWeight={"bold"}
           color={status === 'default' ? "white" : "gray.200"}
         >

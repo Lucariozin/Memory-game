@@ -33,4 +33,5 @@ export type MemoryGameContextType = {
   restartGame: () => void;
   highestScorePlayer: Player | undefined;
   newGame: () => void;
+  playersWhoTied: Player[];
 };

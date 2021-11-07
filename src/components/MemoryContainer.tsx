@@ -11,8 +11,9 @@ export function MemoryContainer() {
       mx="auto"
       mt="20px"
       mb="50px"
-      spacing="10px"
-      gridTemplateColumns={roundSetup.gridSize === "4x4" ? "1fr 1fr 1fr 1fr" : "1fr 1fr 1fr 1fr 1fr 1fr"}
+      spacing={["5px", "8px", "10px"]}
+      paddingX={["1"]}
+      gridTemplateColumns={roundSetup.gridSize === "4x4" ? "1fr 1fr 1fr 1fr" : ["1fr 1fr 1fr 1fr 1fr 1fr"]}
     >
       
       {cards.map((card) => (

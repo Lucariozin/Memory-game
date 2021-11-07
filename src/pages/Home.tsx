@@ -20,6 +20,7 @@ export default function Home() {
       justify="center"
       direction="column"
       bg="red.600"
+      paddingX="3"
     >
       <Heading
         as="h1"
@@ -31,9 +32,10 @@ export default function Home() {
       </Heading>
 
       <VStack
-        w="550px"
+        maxW="550px"
+        w="100%"
         bg="gray.50"
-        p="12"
+        p={["6", "12"]}
         borderRadius="15"
         spacing="30px"
         boxShadow="5px 5px 5px rgba(0, 0, 0, 0.3)"

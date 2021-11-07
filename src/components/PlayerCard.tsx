@@ -17,7 +17,7 @@ export function PlayerCard({ name, score, isActive = false }: PlayerCardProps) {
       <Flex
         bg={isActive ? "pink.500" : "gray.200"}
         borderRadius="10"
-        px="4"
+        px={["2", "3", "4"]}
         align="center"
         justify="space-between"
         w="100%"
@@ -36,6 +36,7 @@ export function PlayerCard({ name, score, isActive = false }: PlayerCardProps) {
           fontWeight="700"
           fontSize="25"
           color={isActive ? "white" : "red.600"}
+          paddingLeft="3"
         >
           {score}
         </Text>
