@@ -27,6 +27,8 @@ export default function Play() {
       w="100%"
       minH="100vh"
       direction="column"
+      paddingTop={["120px", "100px"]}
+      justify="center"
     >
       <ModalOfTheBestPlayer
         isOpen={modalIsOpen}

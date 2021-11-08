@@ -13,6 +13,10 @@ export function Header() {
       h="80px"
       bg="gray.50"
       paddingX="2"
+      position="absolute"
+      top="0"
+      left="0"
+      paddingTop={["20px", "0"]}
     >
       <Flex
         w="900px"
@@ -25,6 +29,7 @@ export function Header() {
           as="h1"
           fontSize="25"
           color="red.600"
+          marginBottom={["20px", "0"]}
         >
           Memory
         </Heading>

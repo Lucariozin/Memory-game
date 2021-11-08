@@ -12,9 +12,14 @@ interface PlayersContainerProps {
 };
 
 export function PlayersContainer({ players }: PlayersContainerProps) {
+  const gridTemplateColumns = players.length === 1 ? ["1fr"]
+    : players.length === 2 ? ["1fr 1fr"] 
+    : players.length === 3 ? ["1fr 1fr", "1fr 1fr 1fr"] 
+    : ["1fr 1fr", "1fr 1fr", "1fr 1fr 1fr 1fr"];
+
   return (
     <SimpleGrid
-      gridTemplateColumns={["1fr 1fr", "1fr 1fr", "1fr 1fr 1fr 1fr"]}
+      gridTemplateColumns={gridTemplateColumns}
       w="100%"
       paddingX="2"
       spacing={["2", "4", "6"]}
