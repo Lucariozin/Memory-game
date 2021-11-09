@@ -23,7 +23,7 @@ export function ModalOfTheBestPlayer({ isOpen, onClose, highestScorePlayer, play
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
 
-      <ModalContent bg="gray.50" marginX="1">
+      <ModalContent bg="gray.50" marginX="2">
         <ModalHeader>
           <HStack justifyContent="center">
             {highestScorePlayer ? (
